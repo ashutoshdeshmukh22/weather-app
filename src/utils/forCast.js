@@ -9,14 +9,9 @@ const forCast = (latitude, longitude, callback) => {
     } else if (response.body.error) {
       callback('Unable to Find Location', undefined); //checking for user input error
     } else {
-      callback(undefined, {
-        Description: response.body.current.weather_descriptions[0],
-        temperature: response.body.current.temperature,
-        feelslike: response.body.current.feelslike,
-      });
-      console.log(
-        `${response.body.current.weather_descriptions[0]} Throughout the day. It is currently ${response.body.current.temperature} degrees out. It feels like ${response.body.current.feelslike}`
-      );
+      const forCastData = `${response.body.current.weather_descriptions[0]} Throughout the day. It is currently ${response.body.current.temperature} degrees out. It feels like ${response.body.current.feelslike}`;
+
+      callback(undefined, forCastData);
     }
   });
 };
